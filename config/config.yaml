@@ -1,0 +1,15 @@
+app_name: "jds-test"
+port: "8080"
+env: "development"
+
+development:
+  jwt_secret: "amRjIHRlc3Q="
+  api_url:
+    data: "https://60c18de74f7e880017dbfd51.mockapi.io/api/v1/jabar-digital-services/product"
+    currency_conversion: "https://free.currencyconverterapi.com/api/v6/convert?q=USD_IDR&compact=y"
+
+qc:
+  jwt_secret: "JWT_SECRET_KEY"
+  api_url:
+    data: "https://60c18de74f7e880017dbfd51.mockapi.io/api/v1/jabar-digital-services/product"
+    currency_conversion: "https://free.currencyconverterapi.com/api/v6/convert?q=USD_IDR&compact=y"

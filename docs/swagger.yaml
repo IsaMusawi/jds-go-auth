@@ -1,0 +1,72 @@
+definitions:
+  model.User:
+    properties:
+      nik:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+      token:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /auth/login:
+    post:
+      consumes:
+        - application/json
+      description: Login a user with NIK and Password
+      parameters:
+        - description: Login data
+          in: body
+          name: login
+          required: true
+          schema:
+            $ref: "#/definitions/model.User"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Login a user
+      tags:
+        - auth
+  /jds-test/auth/register:
+    post:
+      consumes:
+        - application/json
+      description: Register a new user with NIK and Role
+      parameters:
+        - description: User data
+          in: body
+          name: user
+          required: true
+          schema:
+            $ref: "#/definitions/model.User"
+      produces:
+        - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Register a new user
+      tags:
+        - auth
+swagger: "2.0"

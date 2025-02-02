@@ -1,0 +1,99 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {}
+  },
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "description": "Login a user with NIK and Password",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["auth"],
+        "summary": "Login a user",
+        "parameters": [
+          {
+            "description": "Login data",
+            "name": "login",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/model.User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    },
+    "/jds-test/auth/register": {
+      "post": {
+        "description": "Register a new user with NIK and Role",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["auth"],
+        "summary": "Register a new user",
+        "parameters": [
+          {
+            "description": "User data",
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/model.User"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "model.User": {
+      "type": "object",
+      "properties": {
+        "nik": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
